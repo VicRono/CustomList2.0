@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList2._0
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T>
     {
         private int _count;
         public int count { get { return _count; } }
@@ -41,14 +42,14 @@ namespace CustomList2._0
         public void Add(T item)
         {
             _count++;
-            Resize();
+            
             items[_count - 1] = item;
         }
 
         public void Add(T item, int item1)
         {
             _count++;
-            Resize();
+            
 
             for (int i = _count; i > item1; i--)
             {
@@ -58,5 +59,6 @@ namespace CustomList2._0
             items[item1] = item;
         }
 
+        
     }
 }

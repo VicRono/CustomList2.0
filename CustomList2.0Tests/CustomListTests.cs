@@ -11,32 +11,49 @@ namespace CustomList2._0.Tests
     [TestClass()]
     public class CustomListTests
     {
-        private TestContext testContextInstance;
-
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         public void Add_intItem_firstIndex()
         {
-            //Arrange
+            
             CustomList<int> myList = new CustomList<int>();
             int expectedResult = 3;
 
+            myList.Add(3);
+
+            Assert.AreEqual(expectedResult, myList[0]);
+        }
+
+        [TestMethod]
+        public void Add_intItem_secondIndex()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            int expectedResult = 5;
 
             //Act
             myList.Add(3);
-
+            myList.Add(expectedResult);
+            int actualResult = myList[1];
             //Assert
-            Assert.AreEqual(expectedResult, myList[0]);
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        [TestMethod]
+        public void Add_intItem_thirdIndex()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            int expectedResult = 9;
+            //Act
+            myList.Add(3);
+            myList.Add(5);
+            myList.Add(expectedResult);
+            int actualResult = myList[2];
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+
         }
     }
 }
