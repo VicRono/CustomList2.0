@@ -290,6 +290,22 @@ namespace CustomList2._0.Tests
             Assert.AreEqual(expectedResult, resultNumbers.count);
         }
 
+        //checks if lists are subtracted
+        [TestMethod]
+        public void SubtractOverload_Subtraction_Pass()
+        {
+            CustomList<int> numbers1 = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7 };
+            CustomList<int> numbers2 = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> odds = new CustomList<int>();
+            int expectedResult = 7;
+            int actualResult;
+
+            odds = numbers1 - numbers2;
+            actualResult = odds[3];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
 
 
     }

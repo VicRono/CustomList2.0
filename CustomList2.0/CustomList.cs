@@ -120,6 +120,32 @@ namespace CustomList2._0
             return ResultList;
         }
 
+        public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> ResultList = new CustomList<T>();
+            ResultList = List1;
+            for (int i = 0; i < List2.count; i++)
+            {
+                ResultList.Remove(List2[i]);
+            }
+            ResultList.DesizeArray();
+            return ResultList;
+        }
+
+        public void DesizeArray()
+        {
+            if ((capacity - _count) > 4)
+            {
+                capacity = capacity / 2;
+                T[] temporaryItems = new T[capacity];
+                for (int i = 0; i < capacity; i++)
+                {
+                    temporaryItems[i] = items[i];
+                }
+                items = temporaryItems;
+            }
+        }
+
         public IEnumerator GetEnumerator()
         {
             for (int index = 0; index < _count; index++)
