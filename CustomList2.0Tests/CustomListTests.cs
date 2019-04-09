@@ -436,5 +436,42 @@ namespace CustomList2._0.Tests
             }
 
         }
+
+        [TestMethod]
+        public void Iterator_IterateOverLogic_Pass()
+        {
+            CustomList<int> numbers = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            CustomList<int> oddsList = new CustomList<int>() { 1, 3, 5, 7, 9, 11, 13, 15 };
+            CustomList<int> expectedList = new CustomList<int>();
+
+            foreach (int odds in numbers)
+            {
+                if (odds % 2 != 0)
+                {
+                    expectedList.Add(odds);
+                }
+            }
+
+            for (int i = 0; i < oddsList.count; i++)
+            {
+                Assert.AreEqual(expectedList[i], oddsList[i]);
+            }
+
+        }
+
+        [TestMethod]
+        public void Iterator_IterationStopsAtEnd_True()
+        {
+            CustomList<string> actualList = new CustomList<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+            CustomList<string> expectedList = new CustomList<string>();
+            int expectedValue = 5;
+
+            foreach (string day in actualList)
+            {
+                expectedList.Add(day);
+            }
+
+            Assert.AreEqual(expectedValue, expectedList.count);
+        }
     }
 }
