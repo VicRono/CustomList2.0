@@ -371,5 +371,55 @@ namespace CustomList2._0.Tests
             Assert.AreEqual(expectedValue, actualValue);
         }
 
+        [TestMethod]
+        public void Zipper_List2After1_Yes()
+        {
+            CustomList<string> weekdays1 = new CustomList<string>() { "Monday", "Wednesday", "Friday", "Sunday" };
+            CustomList<string> weekdays2 = new CustomList<string>() { "Tuesday", "Thursday", "Saturday" };
+            CustomList<string> weekdays = new CustomList<string>();
+            string expectedValue = "Monday";
+            string actualValue;
+
+            weekdays = weekdays1.Zip(weekdays2);
+            actualValue = weekdays[0];
+
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [TestMethod]
+        public void Zipper_IfZippedCount_Correct()
+        {
+            CustomList<string> weekdays1 = new CustomList<string>() { "Monday", "Wednesday", "Friday", "Sunday" };
+            CustomList<string> weekdays2 = new CustomList<string>() { "Tuesday", "Thursday", "Saturday" };
+            CustomList<string> weekdays = new CustomList<string>();
+            int expectedCount = 7;
+            int actualCount;
+
+            weekdays = weekdays1.Zip(weekdays2);
+            actualCount = weekdays.count;
+
+           
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        [TestMethod]
+        public void Zipper_ArrayResized_True()
+        {
+            CustomList<int> list1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> list2 = new CustomList<int>() { 2, 4, 6, 8 };
+            CustomList<int> resultList = new CustomList<int>();
+            int expectedResult = 8;
+            int actualResult;
+
+            resultList = list1.Zip(list2);
+            actualResult = resultList.capacity;
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+
+
+
     }
 }
