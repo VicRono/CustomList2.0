@@ -198,7 +198,7 @@ namespace CustomList2._0.Tests
 
         //check to see if nothing is removed
         [TestMethod]
-        public void Remove_NoMatch_NoRemove()
+        public void Remove_NotFound_NotRemoved()
         {
             
             CustomList<string> weekdays = new CustomList<string>() { "monday", "tuesday", "wednesday", "thursday", "friday" };
@@ -208,6 +208,23 @@ namespace CustomList2._0.Tests
             actualCount = weekdays.count;
             
             Assert.IsTrue(actualCount == 5);
+
+        }
+
+        [TestMethod]
+        public void ToString_Conversion_True()
+        {
+            //Arrange
+            CustomList<int> numbers = new CustomList<int>() { 1, 2, 3, 4, 5 };
+            CustomList<string> expectedList = new CustomList<string>();
+            string actualresult;
+            string expectedResult = "1 2 3 4 5 ";
+
+            //Act
+            actualresult = numbers.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualresult);
 
         }
 

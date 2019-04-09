@@ -94,6 +94,18 @@ namespace CustomList2._0
             }
         }
 
+        public override string ToString()
+        {
+
+            string stringifiedList = "";
+            for (int i = 0; i < _count; i++)
+            {
+                stringifiedList += items[i] + " ";
+            }
+            return stringifiedList;
+
+        }
+
         public IEnumerator GetEnumerator()
         {
             for (int index = 0; index < _count; index++)
