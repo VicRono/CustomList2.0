@@ -214,16 +214,13 @@ namespace CustomList2._0.Tests
         [TestMethod]
         public void ToString_Conversion_True()
         {
-            //Arrange
             CustomList<int> numbers = new CustomList<int>() { 1, 2, 3, 4, 5 };
             CustomList<string> expectedList = new CustomList<string>();
             string actualresult;
             string expectedResult = "1 2 3 4 5 ";
 
-            //Act
             actualresult = numbers.ToString();
 
-            //Assert
             Assert.AreEqual(expectedResult, actualresult);
 
         }

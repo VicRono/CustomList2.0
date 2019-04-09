@@ -106,6 +106,20 @@ namespace CustomList2._0
 
         }
 
+        public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> ResultList = new CustomList<T>();
+            for (int i = 0; i < List1.count; i++)
+            {
+                ResultList.Add(List1[i]);
+            }
+            for (int j = 0; j < List2.count; j++)
+            {
+                ResultList.Add(List2[j]);
+            }
+            return ResultList;
+        }
+
         public IEnumerator GetEnumerator()
         {
             for (int index = 0; index < _count; index++)
