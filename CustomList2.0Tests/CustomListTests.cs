@@ -55,5 +55,117 @@ namespace CustomList2._0.Tests
             Assert.AreEqual(expectedResult, actualResult);
 
         }
+
+        [TestMethod]
+        public void Add_CheckValueAtIndex_Equal()
+        {
+            CustomList<int> primeNos = new CustomList<int>();
+            int expectedResult = 11;
+
+            primeNos.Add(3);
+            primeNos.Add(5);
+            primeNos.Add(7);
+            primeNos.Add(11);
+            primeNos.Add(13);
+            primeNos.Add(17);
+
+            Assert.AreEqual(expectedResult, primeNos[3]);
+        }
+
+        //throws out of bound exception
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_OutOfBound_ThrowException()
+        {
+            CustomList<int> numbers = new CustomList<int>(5);
+            int expectedResult;
+            
+            numbers.Add(1);
+            numbers.Add(2);
+            numbers.Add(3);
+            numbers.Add(4);
+            
+            expectedResult = numbers[6];
+        }
+
+        [TestMethod]
+        public void Add_intItem_givenIndex()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            int expectedResult = 3;
+
+            myList.Add(1);
+            myList.Add(5);
+            myList.Add(7);
+            myList.Add(9);
+            myList.Add(11);
+            myList.Add(3, 1);
+            
+            Assert.AreEqual(expectedResult, myList[1]);
+
+        }
+
+        [TestMethod]
+        public void Resize_value_doesResize()
+        {
+            CustomList<int> primeNos = new CustomList<int>() { 3, 5, 7 };
+            int expectedValue = 8;
+            int actualValue;
+
+            primeNos.Add(9);
+            primeNos.Add(11);
+            actualValue = primeNos.capacity;
+
+            
+            Assert.AreEqual(expectedValue, actualValue);
+
+        }
+
+
+        [TestMethod]
+        //Test for Count
+        public void Count_ListItems_IsRight()
+        {
+            
+            CustomList<int> primeNos = new CustomList<int>() { 3, 5, 7, 9, 11, 13 };
+            int expectedResult = 6;
+
+            
+            int actualResult = primeNos.count;
+
+            
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        [TestMethod]
+        public void Count_ListItems_IsWrong()
+        {
+            
+            CustomList<int> primeNos = new CustomList<int>() { 3, 5, 7, 9, 11, 13 };
+            int expectedResult = 6;
+            int actualResult = primeNos.count;
+            
+            primeNos.Add(17);
+            actualResult = primeNos.count;
+
+            
+            Assert.AreNotEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Remove_ListItems_firstIndex()
+        {
+            CustomList<string> weekdays = new CustomList<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Monday" };
+            string expectedResult = "Tuesday";
+            string actualResult;
+
+            weekdays.Remove("Monday");
+            actualResult = weekdays[0];
+
+            
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
     }
 }

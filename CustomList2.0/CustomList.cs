@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList2._0
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         private int _count;
         public int count { get { return _count; } }
@@ -41,6 +41,7 @@ namespace CustomList2._0
 
         public void Add(T item)
         {
+            ResizeArray();
             _count++;
             
             items[_count - 1] = item;
@@ -48,9 +49,9 @@ namespace CustomList2._0
 
         public void Add(T item, int item1)
         {
+            ResizeArray();
             _count++;
             
-
             for (int i = _count; i > item1; i--)
             {
                 items[i] = items[i - 1];
@@ -59,6 +60,46 @@ namespace CustomList2._0
             items[item1] = item;
         }
 
-        
+        public void Remove(T item)
+        {
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (item.Equals(items[i]))
+                {
+                    items[i] = default(T);
+                    _count--;
+                    for (int j = i; j < _count; j++)
+                    {
+                        items[j] = items[j + 1];
+
+                    }
+                    items[_count] = default(T);
+                    break; //once it removes said instance, breaks out of loop
+                }
+            }
+        }
+
+        public void ResizeArray()
+        {
+            if (_count == capacity)
+            {
+                capacity = capacity * 2;
+                T[] temporaryItems = new T[capacity];
+                for (int i = 0; i < items.Length; i++)
+                {
+                    temporaryItems[i] = items[i];
+                }
+                items = temporaryItems;
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int index = 0; index < _count; index++)
+            {
+                yield return items[index];
+            }
+        }
     }
 }
