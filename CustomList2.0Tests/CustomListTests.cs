@@ -418,8 +418,23 @@ namespace CustomList2._0.Tests
 
         }
 
+        [TestMethod]
+        public void Iterator_Iteration_Done()
+        {
+            CustomList<int> numbers = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            CustomList<int> expectedList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            CustomList<int> actualList = new CustomList<int>();
+            
+            foreach (int all in numbers)
+            {
+                actualList.Add(all);
+            }
 
+            for (int i = 0; i < expectedList.count; i++)
+            {
+                Assert.AreEqual(expectedList[i], actualList[i]);
+            }
 
-
+        }
     }
 }
