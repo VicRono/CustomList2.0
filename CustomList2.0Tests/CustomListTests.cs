@@ -222,8 +222,75 @@ namespace CustomList2._0.Tests
             actualresult = numbers.ToString();
 
             Assert.AreEqual(expectedResult, actualresult);
+        }
+
+        [TestMethod]
+        public void PlusOverload_Concatenation_Pass()
+        {
+            CustomList<int> List1 = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> List2 = new CustomList<int>() { 7, 9, 11 };
+
+            CustomList<int> Result = new CustomList<int>();
+            int expectedResult = 11;
+            int actualResult;
+
+            Result = List1 + List2;
+            actualResult = Result[5];
+
+            Assert.AreEqual(expectedResult, actualResult);
 
         }
+
+        [TestMethod]
+        public void PlusOverload_NullValues_AtEnd()
+        {
+            CustomList<int> List1 = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            CustomList<int> List2 = new CustomList<int>() { 11, 13, 17, 19, 23 };
+
+            CustomList<int> Result = new CustomList<int>();
+            int expectedResult = 11;
+            int actualResult;
+            
+            Result = List1 + List2;
+            actualResult = Result[5];
+            
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        [TestMethod]
+        public void PlusOverload_List2_After1()
+        {
+            CustomList<string> weekdays1 = new CustomList<string>() { "Monday", "Tuesday", "Wednesday" };
+            CustomList<string> weekdays2 = new CustomList<string>() { "Thursday", "Friday" };
+
+            CustomList<string> weekdays = new CustomList<string>();
+            string expectedResult = "Thursday";
+            string actualResult;
+
+            weekdays = weekdays1 + weekdays2;
+            actualResult = weekdays[0];
+
+            Assert.AreNotEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void PlusOverload_ResultCount_OnePlusTwo()
+        {
+            CustomList<int> numbers1 = new CustomList<int>() { 1, 2, 3, 4, 5 };
+            CustomList<int> numbers2 = new CustomList<int>() { 6, 7, 8, 9, 10 };
+
+            CustomList<int> resultNumbers = new CustomList<int>();
+            int expectedResult = 10;
+            int actualResult;
+           
+            resultNumbers = numbers1 + numbers2;
+            actualResult = resultNumbers.count;
+            
+            Assert.AreEqual(expectedResult, resultNumbers.count);
+        }
+
+
 
     }
 }
