@@ -306,6 +306,59 @@ namespace CustomList2._0.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        //checks if DesizeArray works
+        [TestMethod]
+        public void SubtractOverload_DesizeArray_True()
+        {
+            CustomList<int> numbers1 = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7 };
+            CustomList<int> numbers2 = new CustomList<int>() { 4, 5, 6, 7 };
+            CustomList<int> odds = new CustomList<int>();
+            int expectedResult = 4;
+            int actualResult;
+            
+            odds = numbers1 - numbers2;
+            actualResult = odds.capacity;
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        //If multiple values found, subtracts just one
+        [TestMethod]
+        public void SubtractOverload_OnlyOne_True()
+        {
+            CustomList<string> weekdays1 = new CustomList<string>() { "Monday", "Tuesday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+            CustomList<string> weekdays2 = new CustomList<string>() { "Thursday", "Tuesday", "Friday" };
+            CustomList<string> weekdays = new CustomList<string>();
+            string expectedResult = "Tuesday";
+            string actualResult;
+
+            weekdays = weekdays1 - weekdays2;
+            actualResult = weekdays[1];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        //checks that only the first instance is deleted, not the second
+        [TestMethod]
+        public void SubtractOverload_DeleteOnlyFirst_True()
+        {
+            CustomList<int> numbers1 = new CustomList<int>() { 10, 20, 50, 30, 40, 50, 60 };
+            CustomList<int> numbers2 = new CustomList<int>() { 87, 56, 50, 58 };
+            CustomList<int> numbers = new CustomList<int>();
+            int expectedResult = 50;
+            int actualResult;
+
+            numbers = numbers1 - numbers2;
+            actualResult = numbers[4];
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+       
+
+
 
 
     }
