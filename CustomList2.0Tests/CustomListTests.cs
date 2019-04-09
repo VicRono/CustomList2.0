@@ -473,5 +473,19 @@ namespace CustomList2._0.Tests
 
             Assert.AreEqual(expectedValue, expectedList.count);
         }
+
+        //check is sorting is done
+        [TestMethod]
+        public void Sort_sorting_True()
+        {
+            CustomList<int> numbers = new CustomList<int> { 4, 8, 80, 7, 6, 0, 56, 12, 101, 87, 16 };
+            int expectedResult = 0;
+            int actualResult;
+
+            numbers.Sort(numbers);
+            actualResult = numbers[0];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
