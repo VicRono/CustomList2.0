@@ -487,5 +487,20 @@ namespace CustomList2._0.Tests
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        //test to see if count is still the same in the new list
+        [TestMethod]
+        public void Sort_IfCount_IsEqual()
+        {
+            CustomList<int> numbers = new CustomList<int> { 4, 8, 7, 5, 20, 18, 6 };
+            int expectedResult = 7;
+            int actualResult;
+
+            numbers.Sort(numbers);
+            actualResult = numbers.count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
     }
 }
