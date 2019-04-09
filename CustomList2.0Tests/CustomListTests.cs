@@ -167,5 +167,49 @@ namespace CustomList2._0.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestMethod]
+        public void Remove_ListItems_SecondIndex()
+        {
+            
+            CustomList<string> weekdays = new CustomList<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            string expectedResult = "Wednesday";
+            string actualResult;
+            
+
+            weekdays.Remove("Tuesday");
+            actualResult = weekdays[1];
+            
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Remove_MultipleInstances_False()
+        {
+            CustomList<int> numbers = new CustomList<int>() { 1, 2, 3, 2, 5, 2, 7 };
+            int expectedCount = 6;
+            int actualCount;
+
+            
+            numbers.Remove(2);
+            actualCount = numbers.count;
+            
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        //check to see if nothing is removed
+        [TestMethod]
+        public void Remove_NoMatch_NoRemove()
+        {
+            
+            CustomList<string> weekdays = new CustomList<string>() { "monday", "tuesday", "wednesday", "thursday", "friday" };
+            int actualCount;
+            
+            weekdays.Remove("sunday");
+            actualCount = weekdays.count;
+            
+            Assert.IsTrue(actualCount == 5);
+
+        }
+
     }
 }
