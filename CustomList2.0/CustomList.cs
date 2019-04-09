@@ -146,6 +146,34 @@ namespace CustomList2._0
             }
         }
 
+        public CustomList<T> Zip(CustomList<T> list)
+        {
+            CustomList<T> ResultList = new CustomList<T>();
+            int counter;
+            if (list.count > this.count)
+            {
+                counter = list.count;
+
+            }
+            else
+            {
+                counter = this.count;
+
+            }
+            for (int i = 0; i < counter; i++)
+            {
+                if (i < this.count)
+                {
+                    ResultList.Add(this[i]);
+                }
+                if (i < list.count)
+                {
+                    ResultList.Add(list[i]);
+                }
+            }
+            return ResultList;
+        }
+
         public IEnumerator GetEnumerator()
         {
             for (int index = 0; index < _count; index++)

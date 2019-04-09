@@ -356,10 +356,20 @@ namespace CustomList2._0.Tests
 
         }
 
-       
+        [TestMethod]
+        public void Zipper_Zipped_True()
+        {
+            CustomList<int> numbers1 = new CustomList<int>() { 1, 3 };
+            CustomList<int> numbers2 = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            CustomList<int> primes = new CustomList<int>();
+            int expectedValue = 10;
+            int actualValue;
 
+            primes = numbers1.Zip(numbers2);
+            actualValue = primes[6];
 
-
+            Assert.AreEqual(expectedValue, actualValue);
+        }
 
     }
 }
